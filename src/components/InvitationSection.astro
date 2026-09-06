@@ -1,0 +1,95 @@
+---
+const sectionData = {
+	location: { eyebrow: '01 / Baptism ceremony', className: 'location' },
+	lunch: { eyebrow: '02 / Reception', className: 'lunch' },
+	'dress-code': { eyebrow: '03 / Come as you are', className: 'dress-code' },
+	'gift-registry': { eyebrow: '04 / Gifts', className: 'gift-registry' },
+	rsvp: { eyebrow: '05 / RSVP', className: 'rsvp' },
+	'see-you-there': { eyebrow: '06 / See you there', className: 'see-you-there' },
+};
+
+type Section = keyof typeof sectionData;
+const { section } = Astro.props as { section: Section };
+const data = sectionData[section];
+---
+
+<section id={section} class={`invitation-section ${data.className}`} aria-labelledby={`${section}-title`}>
+	<div class="section-inner">
+		<p class="eyebrow">{data.eyebrow}</p>
+
+		{section === 'location' && (
+			<>
+				<h1 id="location-title">Baptism<br />will be<br />on</h1>
+				<div class="event-meta">
+					<p>September 20, 2026</p>
+					<strong>10 AM</strong>
+				</div>
+				<img class="hero-photo" src="/images/arthur-portrait.png" alt="Arthur Blake" />
+				<div class="location-copy">
+					<h2>Ninong &amp; Ninang, come a little early?</h2>
+					<p>Join us at 10:00 AM for a little seminar before my baptism.</p>
+					<address>Saint John the Baptist Parish Church<br />Zamora, Dinalupihan, Bataan</address>
+				</div>
+				<img class="church-photo" src="/images/church.png" alt="Saint John the Baptist Parish Church" />
+				<img class="map-photo" src="/images/site-map-and-route.jpg" alt="Map and route to Saint John the Baptist Parish Church" />
+			</>
+		)}
+
+		{section === 'lunch' && (
+			<>
+				<h2 id="lunch-title">Reception<br />lunch</h2>
+				<p class="lead">Join us for lunch after the baptism ceremony. Guests arriving later are welcome to come directly to the restaurant.</p>
+				<div class="photo-pair">
+					<img src="/images/arthur-spoon.jpg" alt="Arthur enjoying lunch" />
+					<img src="/images/arthur-high-chair.jpg" alt="Arthur sitting at the table" />
+				</div>
+				<div class="text-block">
+					<p><strong>12:30 PM</strong></p>
+					<address>Seasons Restaurant<br />Dinalupihan, Bataan</address>
+				</div>
+			</>
+		)}
+
+		{section === 'dress-code' && (
+			<>
+				<h2 id="dress-code-title">Come as<br />you are</h2>
+				<p class="dress-note">Wear whatever lets you feel comfortable. We will be happy simply to celebrate with you.</p>
+				<img class="dress-photo" src="/images/arthur-with-dad.jpg" alt="Arthur with his dad" />
+			</>
+		)}
+
+		{section === 'gift-registry' && (
+			<>
+				<h2 id="gift-registry-title">Your presence<br />is the present</h2>
+				<p class="lead">We are grateful to celebrate Arthur's special day with you. For those who would like to give, these are a few things he would love.</p>
+				<div class="gift-grid" role="list" aria-label="Arthur's gift list">
+					<div class="gift-item" role="listitem">Books for Arthur's library</div>
+					<div class="gift-item" role="listitem">Diapers</div>
+					<div class="gift-item" role="listitem">Baby wipes</div>
+					<div class="gift-item" role="listitem">Clothes for 12 months and up</div>
+					<div class="gift-item" role="listitem">Bath-time essentials</div>
+					<div class="gift-item" role="listitem">Savings contribution</div>
+				</div>
+			</>
+		)}
+
+		{section === 'rsvp' && (
+			<>
+				<h2 id="rsvp-title">Kindly let us know</h2>
+				<p class="lead">Please confirm your attendance so we can save a seat for you.</p>
+				<div class="contact-list">
+					<a href="tel:+639171234567">Call or text<br /><strong>0917 123 4567</strong></a>
+					<a href="https://m.me/" target="_blank" rel="noreferrer">Message us<br /><strong>on Messenger</strong></a>
+				</div>
+			</>
+		)}
+
+		{section === 'see-you-there' && (
+			<>
+				<h2 id="see-you-there-title">See you<br />there</h2>
+				<p class="closing">With love,<br />Arthur and family</p>
+				<img class="closing-photo" src="/images/arthur-portrait.png" alt="Arthur Blake" />
+			</>
+		)}
+	</div>
+</section>

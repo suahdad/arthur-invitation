@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import InvitationSection from '../components/InvitationSection.astro';
+
+const sections = ['location', 'lunch', 'dress-code', 'gift-registry', 'rsvp', 'see-you-there'] as const;
+type Section = (typeof sections)[number];
+
+const sectionLabels: Record<Section, string> = {
+	location: 'Ceremony',
+	lunch: 'Reception',
+	'dress-code': 'Come as you are',
+	'gift-registry': 'Gifts',
+	rsvp: 'RSVP',
+	'see-you-there': 'With love',
+};
+---
+
+<Layout>
+	<main>
+		<nav class="section-nav" aria-label="Invitation sections">
+			{sections.map((section) => (
+				<a href={`#${section}`}>{sectionLabels[section]}</a>
+			))}
+		</nav>
+
+		{sections.map((section) => <InvitationSection section={section} />)}
+	</main>
+</Layout>
+
+<style>
+	main {
+		background: var(--paper);
+	}
+
+	.section-nav {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		display: flex;
+		gap: 1rem;
+		overflow-x: auto;
+		padding: 0.9rem 1.25rem;
+		background: rgba(242, 239, 235, 0.94);
+		border-bottom: 1px solid var(--rule);
+		backdrop-filter: blur(12px);
+	}
+
+	.section-nav a {
+		flex: 0 0 auto;
+		color: var(--muted-ink);
+		font-family: var(--utility);
+		font-size: 0.68rem;
+		letter-spacing: 0.1em;
+		text-decoration: none;
+		text-transform: uppercase;
+	}
+</style>
