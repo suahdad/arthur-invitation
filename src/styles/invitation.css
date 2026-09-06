@@ -24,6 +24,7 @@ body {
 	margin: 0;
 	width: 100%;
 	min-height: 100%;
+	scroll-snap-type: y mandatory;
 }
 
 body {
@@ -32,12 +33,18 @@ body {
 	font-family: var(--reading);
 }
 
+main {
+	scroll-snap-type: y proximity;
+}
+
 .invitation-section {
 	position: relative;
 	overflow: hidden;
 	min-height: 100svh;
 	padding: 5rem 1.5rem;
 	border-bottom: 1px solid var(--rule);
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
 }
 
 .section-inner {
