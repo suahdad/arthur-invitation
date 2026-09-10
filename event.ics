@@ -1,0 +1,12 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Arthur Blake//Baptism//EN
+BEGIN:VEVENT
+UID:arthur-baptism-2026-09-20@arthur-invite
+DTSTAMP:20260920T100000Z
+DTSTART;TZID=Asia/Manila:20260920T100000
+DTEND;TZID=Asia/Manila:20260920T150000
+SUMMARY:Arthur Blake's Baptism
+LOCATION:Saint John the Baptist Parish Church, Zamora, Dinalupihan, Bataan
+END:VEVENT
+END:VCALENDAR
